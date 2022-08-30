@@ -8,7 +8,7 @@ def login_user(id,pwd):
     cur.execute(f"SELECT * FROM users WHERE id='{id}' and pw='{pwd}' ")
     return cur.fetchone()
 
-menu = st.sidebar.selectbox('MENU', options=['1','회원가입','로그인','회원목록'])
+menu = st.sidebar.selectbox('MENU', options=['1','회원가입','로그인','회원목록', '정보 수정'])
 
 
 if menu == '회원가입':
@@ -57,3 +57,6 @@ if menu== '회원목록':
     st.subheader('회원목록')
     df = pd.read_spl("SELECT name, age, gender FROM users", con)
     st.datafram(df, 200,100)
+
+ if menu == '정보수정':
+     st.subheader('정보수정')
